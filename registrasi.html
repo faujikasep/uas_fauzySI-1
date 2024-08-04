@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-image: url("BMW.jpg");
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        color: #333;
+      }
+      .container {
+        background: rgba(255, 255, 255, 0.9);
+        max-width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin: 10px 0 5px;
+      }
+      input {
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+      button {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #fa0707;
+        color: #fff;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #555;
+      }
+      .message {
+        display: none;
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #dff0d8;
+        color: #3c763d;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Registrasi</h1>
+      <form id="registrationForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+
+        <label for="confirmPassword">Confirm Password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          required
+        />
+
+        <button type="button" onclick="window.location.href='registrasi.html'">
+          Submit
+        </button>
+        <a href="index.html" class="back-link"><h2>Back</h2></a>
+      </form>
+      <div class="message" id="message"></div>
+    </div>
+
+    <script>
+      document
+        .getElementById("registrationForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          var fullName = document.getElementById("fullName").value;
+          var email = document.getElementById("email").value;
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+          var confirmPassword =
+            document.getElementById("confirmPassword").value;
+          var message = document.getElementById("message");
+
+          if (password !== confirmPassword) {
+            message.style.display = "block";
+            message.style.backgroundColor = "#f2dede";
+            message.style.color = "#a94442";
+            message.textContent = "Passwords do not match.";
+            return;
+          }
+
+          message.style.display = "block";
+          message.style.backgroundColor = "#dff0d8";
+          message.style.color = "#3c763d";
+          message.textContent = "Registration successful!";
+
+          // Clear the form
+          document.getElementById("registrationForm").reset();
+        });
+    </script>
+  </body>
+</html>

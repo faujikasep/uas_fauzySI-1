@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Link to your external CSS file -->
+  </head>
+  <style>
+    /* Reset default margin and padding */
+    body,
+    header,
+    main,
+    h1,
+    form,
+    label,
+    input,
+    textarea,
+    button,
+    a {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Basic body styling */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: blue;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Header styling */
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 2em;
+    }
+
+    /* Form styling */
+    form {
+      display: inline-block;
+      background-color: #fff;
+      color: #000;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Label and input styling */
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0 20px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    textarea {
+      resize: vertical; /* Allows resizing vertically only */
+    }
+
+    /* Button styling */
+    button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Back link styling */
+    .back-link {
+      display: inline-block;
+      margin-top: 20px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <body>
+    <header>
+      <h1>Contact Kami jika Anda ingin bertanya</h1>
+    </header>
+
+    <main>
+      <form id="contactForm">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" required />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Send Message</button>
+        <a href="index.html" class="back-link">Back</a>
+      </form>
+    </main>
+  </body>
+</html>

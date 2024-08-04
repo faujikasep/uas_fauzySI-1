@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fabric Purchase Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Link to your external CSS file -->
+  </head>
+  <style>
+    /* Reset default margin and padding */
+    body,
+    .container,
+    h1,
+    form,
+    label,
+    input,
+    button,
+    .result {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* Basic body styling */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f4f4f4;
+      font-family: "Arial", sans-serif;
+    }
+
+    /* Container styling */
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 300px;
+    }
+
+    /* Header styling */
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+    }
+
+    /* Form group styling */
+    .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+
+    /* Label styling */
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    /* Input and select styling */
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    /* Button styling */
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    /* Result styling */
+    .result {
+      margin-top: 20px;
+    }
+
+    .result h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    #calculation-result p {
+      font-size: 1rem;
+      color: #333;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <h1>Fabric Purchase Calculator</h1>
+      <form id="purchase-form">
+        <div class="form-group">
+          <label for="price-per-meter">Select Price per Meter:</label>
+          <select id="price-per-meter" required>
+            <option value="21000">Rp 21.000</option>
+            <option value="26000">Rp 26.000</option>
+            <option value="35000">Rp 35.000</option>
+            <option value="28000">Rp 28.000</option>
+            <option value="33000">Rp 33.000</option>
+            <option value="26500">Rp 26.500</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="quantity-meters">Quantity (Meters):</label>
+          <input
+            type="number"
+            id="quantity-meters"
+            placeholder="Enter quantity in meters"
+          />
+        </div>
+        <div class="form-group">
+          <label for="quantity-yards">Quantity (Yards):</label>
+          <input
+            type="number"
+            id="quantity-yards"
+            placeholder="Enter quantity in yards"
+          />
+        </div>
+        <button type="button" onclick="calculateTotal()">
+          Calculate Total Cost
+        </button>
+      </form>
+      <div class="result">
+        <h2>Calculation Results:</h2>
+        <div id="calculation-result">
+          <p>Total Cost: Rp <span id="total-cost">0</span></p>
+        </div>
+      </div>
+    </div>
+    <script>
+      function calculateTotal() {
+        // Get the selected price per meter
+        const pricePerMeter = parseFloat(
+          document.getElementById("price-per-meter").value
+        );
+
+        // Get quantities in meters and yards
+        const quantityMeters =
+          parseFloat(document.getElementById("quantity-meters").value) || 0;
+        const quantityYards =
+          parseFloat(document.getElementById("quantity-yards").value) || 0;
+
+        // Price per yard
+        const pricePerYard = 25000;
+
+        // Convert yards to meters (1 yard = 0.9144 meters)
+        const quantityInMetersFromYards = quantityYards * 0.9144;
+
+        // Total quantity in meters
+        const totalQuantityInMeters =
+          quantityMeters + quantityInMetersFromYards;
+
+        // Calculate total cost
+        const totalCost =
+          pricePerMeter * quantityMeters + pricePerYard * quantityYards;
+
+        // Display the result
+        document.getElementById("total-cost").innerText = totalCost.toFixed(2);
+      }
+    </script>
+  </body>
+</html>

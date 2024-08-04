@@ -1,0 +1,153 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kain Toyobo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+
+    .container {
+      width: 60%;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header .logo {
+      width: 20%;
+    }
+
+    header h1 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    header .cart {
+      font-size: 18px;
+      color: #333;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #ccc;
+      margin: 20px 0;
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .content .text {
+      width: 70%;
+    }
+
+    .content .text h2 {
+      font-size: 20px;
+      color: #e74c3c;
+    }
+
+    .content .text ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .content .text ul li {
+      background: #e74c3c;
+      color: #fff;
+      padding: 10px;
+      margin: 5px 0;
+      border-radius: 5px;
+    }
+
+    .content .text a {
+      color: #3498db;
+      text-decoration: none;
+    }
+
+    .content .text a:hover {
+      text-decoration: underline;
+    }
+
+    .content .text button {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .content .text button:hover {
+      background-color: #2980b9;
+    }
+
+    .content .image img {
+      width: 50%;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .content .text,
+      .content .image {
+        width: 100%;
+      }
+    }
+  </style>
+  <body>
+    <div class="container">
+      <header>
+        <img src="asset/logo utama.jpg" alt="Logo Utama" class="logo" />
+      </header>
+      <hr />
+      <div class="content">
+        <div class="text">
+          <h2>Karakteristik Kain Toyobo</h2>
+          <ul>
+            <li>cocok untuk kemeja</li>
+            <li>bahan nya gak panas</li>
+            <li>lembut dan halus</li>
+            <li></li>
+            <li><b>Harga: Rp.26.500/meter </b></li>
+            <!DOCTYPE html>
+          </ul>
+          <p>
+            <button id="add-to-cart">Tambah ke Keranjang</button>
+          </p>
+          <p>
+            Beli disini :
+            <a href="order.html" target="_blank">Klik Untuk pembelian</a>
+          </p>
+          <p>Klik back untuk kembali ke menu : <a href="index.html">back</a></p>
+        </div>
+        <div class="image">
+          <img src="asset/kaintoyobo.jpg" alt="Kain Toyobo" />
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

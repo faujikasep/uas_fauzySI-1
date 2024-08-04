@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Purchase Form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Link to your external CSS file -->
+    <style>
+      /* Reset default margin and padding */
+      body,
+      header,
+      main,
+      h1,
+      form,
+      label,
+      input,
+      select,
+      button,
+      a {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Basic body styling */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* Header styling */
+      header {
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 2em;
+        color: #007bff;
+      }
+
+      /* Main content styling */
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Form styling */
+      form {
+        background-color: #fff;
+        color: #333;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+      }
+
+      /* Label and input styling */
+      label {
+        display: block;
+        margin: 10px 0 5px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0 20px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+
+      textarea {
+        resize: vertical; /* Allows resizing vertically only */
+      }
+
+      /* Button styling */
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1em;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Back link styling */
+      .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Purchase Form</h1>
+    </header>
+
+    <main>
+      <form id="purchaseForm">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" required />
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" required />
+
+        <label for="product">Product</label>
+        <select id="product" name="product" required onchange="updatePrice()">
+          <option value="">Select a product</option>
+          <option value="21000">Kain Bsy</option>
+          <option value="26000">Kain Crinkle</option>
+          <option value="35000">Kain Linen</option>
+          <option value="28000">Kain Toyobo</option>
+          <option value="33000">Kain Shimer</option>
+          <option value="26500">Kain Madinah</option>
+        </select>
+
+        <label for="color">Color</label>
+        <input type="text" id="color" name="color" required />
+
+        <!-- Hidden input to store the price per meter -->
+        <input type="hidden" id="price-per-meter-hidden" value="21000" />
+
+        <div class="container">
+          <h1>Fabric Purchase Calculator</h1>
+          <form id="purchase-form">
+            <div class="form-group">
+              <label for="price-per-meter">Select Price per Meter:</label>
+              <select id="price-per-meter" required>
+                <option value="21000">Rp 21.000</option>
+                <option value="26000">Rp 26.000</option>
+                <option value="35000">Rp 35.000</option>
+                <option value="28000">Rp 28.000</option>
+                <option value="33000">Rp 33.000</option>
+                <option value="26500">Rp 26.500</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="quantity-meters">Quantity (Meters):</label>
+              <input
+                type="number"
+                id="quantity-meters"
+                placeholder="Enter quantity in meters"
+              />
+            </div>
+            <div class="form-group">
+              <label for="quantity-yards">Quantity (Yards):</label>
+              <input
+                type="number"
+                id="quantity-yards"
+                placeholder="Enter quantity in yards"
+              />
+            </div>
+            <button type="button" onclick="calculateTotal()">
+              Calculate Total Cost
+            </button>
+          </form>
+          <div class="result">
+            <h2>Calculation Results:</h2>
+            <div id="calculation-result">
+              <p>Total Cost: Rp <span id="total-cost">0</span></p>
+            </div>
+          </div>
+        </div>
+
+        <label for="paymentMethod">Payment Method</label>
+        <select id="paymentMethod" name="paymentMethod" required>
+          <option value="">Select payment method</option>
+          <option value="credit-card">Credit Card</option>
+          <option value="paypal">PayPal</option>
+          <option value="bank-transfer">Bank Transfer</option>
+        </select>
+
+        <button type="submit">Submit Order</button>
+      </form>
+
+      <a href="index.html" class="back-link">Back to Home</a>
+    </main>
+
+    <script>
+      function updatePrice() {
+        // Get the selected price per meter
+        const pricePerMeter = document.getElementById("product").value;
+        // Set the hidden input to the selected price
+        document.getElementById("price-per-meter-hidden").value = pricePerMeter;
+        // Set the price in the fabric calculator
+        document.getElementById("price-per-meter").value = pricePerMeter;
+      }
+
+      function calculateTotal() {
+        // Get the price per meter from the hidden input
+        const pricePerMeter = parseFloat(
+          document.getElementById("price-per-meter-hidden").value
+        );
+
+        // Get quantities in meters and yards
+        const quantityMeters =
+          parseFloat(document.getElementById("quantity-meters").value) || 0;
+        const quantityYards =
+          parseFloat(document.getElementById("quantity-yards").value) || 0;
+
+        // Price per yard
+        const pricePerYard = 25000;
+
+        // Convert yards to meters (1 yard = 0.9144 meters)
+        const quantityInMetersFromYards = quantityYards * 0.9144;
+
+        // Total quantity in meters
+        const totalQuantityInMeters =
+          quantityMeters + quantityInMetersFromYards;
+
+        // Calculate total cost
+        const totalCost =
+          pricePerMeter * totalQuantityInMeters + pricePerYard * quantityYards;
+
+        // Display the result
+        document.getElementById("total-cost").innerText = totalCost.toFixed(2);
+      }
+    </script>
+  </body>
+</html>
